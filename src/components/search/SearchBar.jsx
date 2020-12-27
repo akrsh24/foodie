@@ -1,13 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AimOutlined, SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import "./SearchBar.scss";
 
 const SearchBar = () => {
 
-    const getLocation=()=>{
-      
+    const [coordinates, setCoordinates] = useState({});
+
+    const getLocation = () => {
+        if (navigator.geolocation)
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+                setCoordinates({ latitude, longitude });
+            }, showError);
     }
+
+    const showError = (error) => {
+        console.log(error);
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                return "User denied the request for Geolocation.";
+            case error.POSITION_UNAVAILABLE:
+                return "Location information is unavailable.";
+            case error.TIMEOUT:
+                return "The request to get user location timed out.";
+            case error.UNKNOWN_ERROR:
+                return "An unknown error occurred.";
+            default: return "An unknown error occurred.";
+        }
+    }
+
+    console.log("Coordinates", coordinates);
+
     return (
         <div className="search-menu-div">
             <div className="search-menu-overlay">
