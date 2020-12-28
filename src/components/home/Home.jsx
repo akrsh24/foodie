@@ -1,11 +1,12 @@
 import React from 'react';
-import "./Home.scss";
 import SearchBar from '../search/SearchBar';
+import ContentComponent from '../content/ContentComponent';
 
 const Home = () => {
     return (
         <>
             <SearchBar />
+            <ContentComponent />
         </>
     );
 }
