@@ -36,7 +36,7 @@ const SearchBar = () => {
         <div className="search-menu-div">
             <div className="search-menu-overlay">
                 <div className="search-menu-bg" />
-                <div className="search-menu-content">
+                <div className="app-layout">
                     <div className="login-span">
                         <div>Login</div>
                         <div>Signup</div>
