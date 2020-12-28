@@ -3,13 +3,6 @@
     width: 100vw;
     background: rgb(200, 200, 200);
     overflow-y: auto;
-}
 
-.app-layout {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    padding: 0 10% 0 10%;
 }

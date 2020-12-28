@@ -4,7 +4,7 @@ import "./ContentComponent.scss";
 
 const ContentComponent = () => {
     return (
-        <div className="app-layout">
+        <div className="content-container">
             <DineCategory />
         </div>
     );
