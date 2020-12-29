@@ -4,7 +4,7 @@ import "./DineCategory.scss";
 const DineCategory = () => {
     return (
         <div className="dine-category-container">
-            <h1>Hello</h1>
+            <h1>Hellos</h1>
         </div>
     );
 }
