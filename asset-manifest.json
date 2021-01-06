@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/foodie/static/css/main.07360380.chunk.css",
-    "main.js": "/foodie/static/js/main.0c4f760e.chunk.js",
-    "main.js.map": "/foodie/static/js/main.0c4f760e.chunk.js.map",
+    "main.js": "/foodie/static/js/main.0fa43f5e.chunk.js",
+    "main.js.map": "/foodie/static/js/main.0fa43f5e.chunk.js.map",
     "runtime-main.js": "/foodie/static/js/runtime-main.f6288402.js",
     "runtime-main.js.map": "/foodie/static/js/runtime-main.f6288402.js.map",
     "static/css/2.4d98ed14.chunk.css": "/foodie/static/css/2.4d98ed14.chunk.css",
-    "static/js/2.2c966684.chunk.js": "/foodie/static/js/2.2c966684.chunk.js",
-    "static/js/2.2c966684.chunk.js.map": "/foodie/static/js/2.2c966684.chunk.js.map",
+    "static/js/2.24ba7a30.chunk.js": "/foodie/static/js/2.24ba7a30.chunk.js",
+    "static/js/2.24ba7a30.chunk.js.map": "/foodie/static/js/2.24ba7a30.chunk.js.map",
     "static/js/3.36cd9c08.chunk.js": "/foodie/static/js/3.36cd9c08.chunk.js",
     "static/js/3.36cd9c08.chunk.js.map": "/foodie/static/js/3.36cd9c08.chunk.js.map",
     "index.html": "/foodie/index.html",
     "static/css/2.4d98ed14.chunk.css.map": "/foodie/static/css/2.4d98ed14.chunk.css.map",
     "static/css/main.07360380.chunk.css.map": "/foodie/static/css/main.07360380.chunk.css.map",
-    "static/js/2.2c966684.chunk.js.LICENSE.txt": "/foodie/static/js/2.2c966684.chunk.js.LICENSE.txt",
+    "static/js/2.24ba7a30.chunk.js.LICENSE.txt": "/foodie/static/js/2.24ba7a30.chunk.js.LICENSE.txt",
     "static/media/SearchBar.scss": "/foodie/static/media/home-food-image.b2762b4c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.f6288402.js",
     "static/css/2.4d98ed14.chunk.css",
-    "static/js/2.2c966684.chunk.js",
+    "static/js/2.24ba7a30.chunk.js",
     "static/css/main.07360380.chunk.css",
-    "static/js/main.0c4f760e.chunk.js"
+    "static/js/main.0fa43f5e.chunk.js"
   ]
 }
