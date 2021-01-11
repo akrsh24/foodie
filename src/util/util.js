@@ -8,9 +8,14 @@ export const config = {
     }
 };
 
-export const apiURL = `https://developers.zomato.com/api/v2.1/categories`;
+export const apiURL = `https://developers.zomato.com/api/v2.1`;
 
 export const messageUtil = (type, msg) => {
     console.log(msg, process.env, process)
     return message[type](msg);
+}
+
+export const getSessionStorageValues = (key) => {
+    let storageValue = JSON.parse(sessionStorage.getItem(key));
+    return storageValue ? storageValue : null;
 }
