@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { utilReducer } from './types/utilReducer';
-import { dineReducer } from './types/dineReducer';
+import { utilReducer } from './types/UtilReducer';
+import { dineReducer } from './types/DineReducer';
 
 export default combineReducers({
     utilReducer,

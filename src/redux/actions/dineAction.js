@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiURL, config, messageUtil } from "../../util/util";
+import { apiURL, config, messageUtil } from "../../util/Util";
 import { SET_DINE_CATEGORIES } from "./types/dineType";
 
 export const setDineCategories = (category) => {

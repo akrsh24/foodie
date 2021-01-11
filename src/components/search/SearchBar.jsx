@@ -1,36 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AimOutlined, SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import "./SearchBar.scss";
+import { getGeoLocation, showError } from '../../util/SearchUtil';
+import { messageUtil } from '../../util/Util';
+import { useDispatch } from 'react-redux';
+import { setCoordinates } from '../../redux/actions/UtilAction';
 
 const SearchBar = () => {
 
-    const [coordinates, setCoordinates] = useState({});
+    const dispatch = useDispatch();
 
-    const getLocation = () => {
-        if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                setCoordinates({ latitude, longitude });
-            }, showError);
-    }
-
-    const showError = (error) => {
-        console.log(error);
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                return "User denied the request for Geolocation.";
-            case error.POSITION_UNAVAILABLE:
-                return "Location information is unavailable.";
-            case error.TIMEOUT:
-                return "The request to get user location timed out.";
-            case error.UNKNOWN_ERROR:
-                return "An unknown error occurred.";
-            default: return "An unknown error occurred.";
+    const getLocation = async () => {
+        try {
+            let geoResponse = await getGeoLocation();
+            let { latitude, longitude } = geoResponse.coords;
+            dispatch(setCoordinates({ latitude, longitude }));
+        }
+        catch (error) {
+            console.error(error);
+            const msg = showError(error.code);
+            messageUtil("error", msg);
         }
     }
-
-    console.log("Coordinates", coordinates);
 
     return (
         <div className="search-menu-div">
