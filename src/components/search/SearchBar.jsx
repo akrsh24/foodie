@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
-import { AimOutlined, SearchOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+import { AimOutlined, EnvironmentTwoTone, SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import "./SearchBar.scss";
+import { getGeoLocation, showError } from '../../util/SearchUtil';
+import { getSessionStorageValues, messageUtil } from '../../util/Util';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCoordinates, setIsLoading } from '../../redux/actions/UtilAction';
+import { getCityDetails } from '../../redux/actions/DineAction';
 
 const SearchBar = () => {
+    const dispatch = useDispatch();
+    const { cityDetails, currentCoordinates } = useSelector(state => ({
+        cityDetails: state.dineReducer.cityDetails,
+        currentCoordinates: state.dineReducer.currentCoordinates
+    }));
 
-    const [coordinates, setCoordinates] = useState({});
+    const [currentCityDetails, setCurrentCityDetails] = useState([]);
+    const [localCoordinates, setLocalCoordinates] = useState({});
 
-    const getLocation = () => {
-        if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                setCoordinates({ latitude, longitude });
-            }, showError);
-    }
+    useEffect(() => {
+        setCurrentCityDetails(cityDetails);
+    }, [cityDetails]);
 
-    const showError = (error) => {
-        console.log(error);
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                return "User denied the request for Geolocation.";
-            case error.POSITION_UNAVAILABLE:
-                return "Location information is unavailable.";
-            case error.TIMEOUT:
-                return "The request to get user location timed out.";
-            case error.UNKNOWN_ERROR:
-                return "An unknown error occurred.";
-            default: return "An unknown error occurred.";
+    useEffect(() => {
+        setLocalCoordinates(currentCoordinates);
+    }, [currentCoordinates]);
+
+    const getLocation = async () => {
+        let coordinatesLocalValue = getSessionStorageValues("currentCoordinates");
+        let cityLocalValue = getSessionStorageValues("currentCityDetails");
+        if (!coordinatesLocalValue || !cityLocalValue) {
+            try {
+                dispatch(setIsLoading(true));
+                let geoResponse = await getGeoLocation();
+                let { latitude, longitude } = geoResponse.coords;
+                sessionStorage.setItem("currentCoordinates", JSON.stringify({ latitude, longitude }));
+                dispatch(setCoordinates({ latitude, longitude }));
+                dispatch(getCityDetails(latitude, longitude));
+                dispatch(setIsLoading(false));
+            }
+            catch (error) {
+                console.error(error);
+                const msg = showError(error.code);
+                messageUtil("error", msg);
+            }
+        }
+        else {
+            setLocalCoordinates(coordinatesLocalValue);
+            setCurrentCityDetails(cityLocalValue);
         }
     }
 
-    console.log("Coordinates", coordinates);
+    console.log("Searchbar states", localCoordinates, currentCityDetails.data, Boolean(currentCityDetails.length > 0));
 
     return (
         <div className="search-menu-div">
@@ -46,7 +67,19 @@ const SearchBar = () => {
                         <div className="description">Discover the best food & drinks</div>
                         <div className="search-bar">
                             <Input
-                                addonBefore={<AimOutlined onClick={getLocation} />}
+                                addonBefore={
+                                    <>
+                                        {
+                                            currentCityDetails && Object.keys(currentCityDetails).length > 0 ?
+                                                <>
+                                                    <EnvironmentTwoTone style={{ marginRight: "5%" }} />
+                                                    {currentCityDetails.data[0].name}
+                                                </>
+                                                :
+                                                <AimOutlined onClick={getLocation} />
+                                        }
+                                    </>
+                                }
                                 addonAfter={<SearchOutlined />}
                                 size="large"
                             />
