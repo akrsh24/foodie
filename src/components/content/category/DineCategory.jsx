@@ -1,9 +1,15 @@
 import { Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import React from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
 import "./DineCategory.scss";
 
 const DineCategory = () => {
+
+    const { dineCategories } = useSelector(state => ({
+        dineCategories: state.dineReducer.dineCategories
+    }), shallowEqual);
+
     return (
         <div className="dine-category-container">
             <section>
