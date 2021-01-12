@@ -1,4 +1,4 @@
-import { SET_CURRENT_LOCATION, SET_LOADING_FLAG } from "../../actions/types/UtilType";
+import { SET_CURRENT_LOCATION, SET_LOADING_FLAG } from "../../types/UtilType";
 
 const initialState = {
     currentCoordinates: {},

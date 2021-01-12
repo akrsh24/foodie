@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiURL, config, messageUtil } from "../../util/Util";
-import { SET_CITY_DETAILS, SET_DINE_CATEGORIES } from "./types/DineType";
+import { SET_CITY_DETAILS, SET_DINE_CATEGORIES } from "../types/DineType";
 
 export const setDineCategories = (category) => {
     return { type: SET_DINE_CATEGORIES, payload: category };

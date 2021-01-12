@@ -1,4 +1,4 @@
-import { SET_CITY_DETAILS, SET_DINE_CATEGORIES } from "../../actions/types/DineType"
+import { SET_CITY_DETAILS, SET_DINE_CATEGORIES } from "../../types/DineType";
 
 const initialState = {
     dineCategories: {},

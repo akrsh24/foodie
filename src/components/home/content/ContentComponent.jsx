@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getDineCategories } from '../../redux/actions/DineAction';
+import { getDineCategories } from '../../../redux/actions/DineAction';
 import DineCategory from './category/DineCategory';
 import "./ContentComponent.scss";
 

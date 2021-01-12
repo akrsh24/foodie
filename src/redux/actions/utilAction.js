@@ -1,4 +1,4 @@
-import { SET_CURRENT_LOCATION, SET_LOADING_FLAG } from './types/UtilType';
+import { SET_CURRENT_LOCATION, SET_LOADING_FLAG } from '../types/UtilType';
 
 export const setCoordinates = (coordinates) => {
     return { type: SET_CURRENT_LOCATION, payload: coordinates };
