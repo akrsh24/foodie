@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiURL, config, messageUtil } from "../../util/Util";
-import { SET_CITY_DETAILS, SET_DINE_CATEGORIES } from "../types/DineType";
+import { SET_CITY_DETAILS, SET_COLLECTION_CATEGORIES, SET_DINE_CATEGORIES } from "../types/DineType";
 
 export const setDineCategories = (category) => {
     return { type: SET_DINE_CATEGORIES, payload: category };
@@ -8,6 +8,10 @@ export const setDineCategories = (category) => {
 
 export const setCityDetails = (details) => {
     return { type: SET_CITY_DETAILS, payload: details };
+}
+
+export const setCollectionCategories = (category) => {
+    return { type: SET_COLLECTION_CATEGORIES, payload: category };
 }
 
 export const getDineCategories = () => {
@@ -35,4 +39,18 @@ export const getCityDetails = (lat, lon) => {
             messageUtil("error", "Something went wrong, Please try again");
         }
     }
+}
+
+export const getCollectionCategories = (cityID, lat, lon) => {
+    return async (dispatch) => {
+        try {
+            let response = await axios.get(`${apiURL}/collections?city_id=${cityID}&lat=${lat}&lon=${lon}`, config);
+            dispatch(setCollectionCategories({ status: response.status, data: response.data }));
+        }
+        catch (error) {
+            console.error(error);
+            messageUtil("error", "Something went wrong, Please try again");
+        }
+    }
+
 }

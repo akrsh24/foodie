@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getDineCategories } from '../../../redux/actions/DineAction';
-import DineCategory from './category/DineCategory';
+import CollectionsCategory from './category/collections/CollectionCategory';
+import DineCategory from './category/dine/DineCategory';
 import "./ContentComponent.scss";
 
 const ContentComponent = () => {
@@ -14,6 +15,7 @@ const ContentComponent = () => {
     return (
         <div className="content-container">
             <DineCategory />
+            <CollectionsCategory />
         </div>
     );
 }

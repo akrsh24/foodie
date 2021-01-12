@@ -1,6 +1,5 @@
 .app-container {
-    background: rgb(200, 200, 200);
+    background: #ffffff;
     overflow-y: auto;
-
     padding: 0 10% 0 10%;
 }

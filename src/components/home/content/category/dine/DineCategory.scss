@@ -10,6 +10,8 @@
     height: 20%;
     margin-right: 5%;
     margin-bottom: 5%;
+    box-shadow: 5px 10px 8px #888888;
+
     &:hover {
         transform: scale(1.1);
         -ms-transform: scale(1.1); /* IE 9 */

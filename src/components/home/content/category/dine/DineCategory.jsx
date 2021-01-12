@@ -5,7 +5,7 @@ import "./DineCategory.scss";
 
 const DineCategory = () => {
     return (
-        <div className="dine-category-container">
+        <article className="dine-category-container">
             <section>
                 <Card
                     hoverable
@@ -42,7 +42,7 @@ const DineCategory = () => {
                     <Meta title="Pro Services" className="dine-category-meta" />
                 </Card>
             </section>
-        </div>
+        </article>
     );
 }
 
