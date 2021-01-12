@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { AimOutlined, EnvironmentTwoTone, SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import "./SearchBar.scss";
-import { getGeoLocation, showError } from '../../util/SearchUtil';
-import { getSessionStorageValues, messageUtil } from '../../util/Util';
+import { getGeoLocation, showError } from '../../../util/SearchUtil';
+import { getSessionStorageValues, messageUtil } from '../../../util/Util';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCoordinates, setIsLoading } from '../../redux/actions/UtilAction';
-import { getCityDetails } from '../../redux/actions/DineAction';
+import { setCoordinates, setIsLoading } from '../../../redux/actions/UtilAction';
+import { getCityDetails } from '../../../redux/actions/DineAction';
 
 const SearchBar = () => {
     const dispatch = useDispatch();

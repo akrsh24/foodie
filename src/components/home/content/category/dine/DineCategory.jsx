@@ -1,17 +1,11 @@
 import { Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
 import "./DineCategory.scss";
 
 const DineCategory = () => {
-
-    const { dineCategories } = useSelector(state => ({
-        dineCategories: state.dineReducer.dineCategories
-    }), shallowEqual);
-
     return (
-        <div className="dine-category-container">
+        <article className="dine-category-container">
             <section>
                 <Card
                     hoverable
@@ -48,7 +42,7 @@ const DineCategory = () => {
                     <Meta title="Pro Services" className="dine-category-meta" />
                 </Card>
             </section>
-        </div>
+        </article>
     );
 }
 

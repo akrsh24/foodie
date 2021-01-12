@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from '../search/SearchBar';
-import ContentComponent from '../content/ContentComponent';
+import SearchBar from '../search/searchbar/SearchBar';
+import ContentComponent from './content/ContentComponent';
 
 const Home = () => {
     return (

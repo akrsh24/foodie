@@ -1,0 +1,10 @@
+.title {
+    font-size: 4vmin;
+}
+
+.collectionList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
