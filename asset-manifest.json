@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/foodie/static/css/main.0ddfc790.chunk.css",
-    "main.js": "/foodie/static/js/main.bff6e688.chunk.js",
-    "main.js.map": "/foodie/static/js/main.bff6e688.chunk.js.map",
-    "runtime-main.js": "/foodie/static/js/runtime-main.f2eabee0.js",
-    "runtime-main.js.map": "/foodie/static/js/runtime-main.f2eabee0.js.map",
+    "main.css": "/foodie/static/css/main.b04e2309.chunk.css",
+    "main.js": "/foodie/static/js/main.885f06c1.chunk.js",
+    "main.js.map": "/foodie/static/js/main.885f06c1.chunk.js.map",
+    "runtime-main.js": "/foodie/static/js/runtime-main.fb94aede.js",
+    "runtime-main.js.map": "/foodie/static/js/runtime-main.fb94aede.js.map",
     "static/css/2.4d98ed14.chunk.css": "/foodie/static/css/2.4d98ed14.chunk.css",
-    "static/js/2.997c6e3f.chunk.js": "/foodie/static/js/2.997c6e3f.chunk.js",
-    "static/js/2.997c6e3f.chunk.js.map": "/foodie/static/js/2.997c6e3f.chunk.js.map",
-    "static/js/3.b4440e5d.chunk.js": "/foodie/static/js/3.b4440e5d.chunk.js",
-    "static/js/3.b4440e5d.chunk.js.map": "/foodie/static/js/3.b4440e5d.chunk.js.map",
+    "static/js/2.ac7e0b6e.chunk.js": "/foodie/static/js/2.ac7e0b6e.chunk.js",
+    "static/js/2.ac7e0b6e.chunk.js.map": "/foodie/static/js/2.ac7e0b6e.chunk.js.map",
+    "static/js/3.9904aa4e.chunk.js": "/foodie/static/js/3.9904aa4e.chunk.js",
+    "static/js/3.9904aa4e.chunk.js.map": "/foodie/static/js/3.9904aa4e.chunk.js.map",
     "index.html": "/foodie/index.html",
     "static/css/2.4d98ed14.chunk.css.map": "/foodie/static/css/2.4d98ed14.chunk.css.map",
-    "static/css/main.0ddfc790.chunk.css.map": "/foodie/static/css/main.0ddfc790.chunk.css.map",
-    "static/js/2.997c6e3f.chunk.js.LICENSE.txt": "/foodie/static/js/2.997c6e3f.chunk.js.LICENSE.txt",
+    "static/css/main.b04e2309.chunk.css.map": "/foodie/static/css/main.b04e2309.chunk.css.map",
+    "static/js/2.ac7e0b6e.chunk.js.LICENSE.txt": "/foodie/static/js/2.ac7e0b6e.chunk.js.LICENSE.txt",
     "static/media/SearchBar.scss": "/foodie/static/media/home-food-image.b2762b4c.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f2eabee0.js",
+    "static/js/runtime-main.fb94aede.js",
     "static/css/2.4d98ed14.chunk.css",
-    "static/js/2.997c6e3f.chunk.js",
-    "static/css/main.0ddfc790.chunk.css",
-    "static/js/main.bff6e688.chunk.js"
+    "static/js/2.ac7e0b6e.chunk.js",
+    "static/css/main.b04e2309.chunk.css",
+    "static/js/main.885f06c1.chunk.js"
   ]
 }
