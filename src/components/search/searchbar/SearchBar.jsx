@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AimOutlined, EnvironmentTwoTone, SearchOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
-import "./SearchBar.scss";
+import { Input, Popover } from 'antd';
+import styles from "./SearchBar.module.css";
 import { getGeoLocation, showError } from '../../../util/SearchUtil';
 import { getSessionStorageValues, messageUtil } from '../../../util/Util';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCoordinates, setIsLoading } from '../../../redux/actions/UtilAction';
-import { getCityDetails } from '../../../redux/actions/DineAction';
+import { getCityDetails, setCityDetails } from '../../../redux/actions/DineAction';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
-    const { cityDetails, currentCoordinates } = useSelector(state => ({
+    const { cityDetails } = useSelector(state => ({
         cityDetails: state.dineReducer.cityDetails,
-        currentCoordinates: state.dineReducer.currentCoordinates
     }));
 
-    const [currentCityDetails, setCurrentCityDetails] = useState([]);
-    const [localCoordinates, setLocalCoordinates] = useState({});
+    const [currentCityDetails, setCurrentCityDetails] = useState({});
 
-    useEffect(() => {
-        setCurrentCityDetails(cityDetails);
-    }, [cityDetails]);
-
-    useEffect(() => {
-        setLocalCoordinates(currentCoordinates);
-    }, [currentCoordinates]);
-
-    const getLocation = async () => {
+    const getLocation = useCallback(async () => {
         let coordinatesLocalValue = getSessionStorageValues("currentCoordinates");
         let cityLocalValue = getSessionStorageValues("currentCityDetails");
         if (!coordinatesLocalValue || !cityLocalValue) {
@@ -41,44 +31,54 @@ const SearchBar = () => {
             }
             catch (error) {
                 console.error(error);
+                const latitude = "12.9716", longitude = "77.5946";
+                sessionStorage.setItem("currentCoordinates", JSON.stringify({ latitude, longitude }));
+                dispatch(setCoordinates({ latitude, longitude }));
+                dispatch(getCityDetails(latitude, longitude));
                 const msg = showError(error.code);
                 messageUtil("error", msg);
             }
         }
         else {
-            setLocalCoordinates(coordinatesLocalValue);
-            setCurrentCityDetails(cityLocalValue);
+            dispatch(setCoordinates(coordinatesLocalValue));
+            dispatch(setCityDetails(cityLocalValue));
         }
-    }
+    }, [dispatch]);
 
-    console.log("Searchbar states", localCoordinates, currentCityDetails.data, Boolean(currentCityDetails.length > 0));
+    useEffect(() => {
+        getLocation();
+    }, [getLocation]);
+
+    useEffect(() => {
+        if (cityDetails.hasOwnProperty("data"))
+            setCurrentCityDetails(cityDetails.data[0]);
+    }, [cityDetails]);
+
+    const locateMe = (
+        <div onClick={getLocation} className={styles.locateMeDiv}>
+            <AimOutlined />  Detect current location
+        </div>
+    )
 
     return (
-        <div className="search-menu-div">
-            <div className="search-menu-overlay">
-                <div className="search-menu-bg" />
-                <div className="search-menu-content">
-                    <div className="login-span">
+        <div className={styles.searchMenuDiv}>
+            <div className={styles.searchMenuOverlay}>
+                <div className={styles.searchMenuBg} />
+                <div className={styles.searchMenuContent}>
+                    <div className={styles.loginSpan}>
                         <div>Login</div>
                         <div>Signup</div>
                     </div>
-                    <div className="app-logo-description-div">
-                        <div className="logo">Foodie</div>
-                        <div className="description">Discover the best food & drinks</div>
-                        <div className="search-bar">
+                    <div className={styles.appLogoDescriptionDiv}>
+                        <div className={styles.logo}>Foodie</div>
+                        <div className={styles.description}>Discover the best food & drinks</div>
+                        <div className={styles.searchBar}>
                             <Input
                                 addonBefore={
-                                    <>
-                                        {
-                                            currentCityDetails && Object.keys(currentCityDetails).length > 0 ?
-                                                <>
-                                                    <EnvironmentTwoTone style={{ marginRight: "5%" }} />
-                                                    {currentCityDetails.data[0].name}
-                                                </>
-                                                :
-                                                <AimOutlined onClick={getLocation} />
-                                        }
-                                    </>
+                                    <Popover content={locateMe} placement="bottom" trigger="hover">
+                                        <EnvironmentTwoTone style={{ marginRight: "5%" }} />
+                                        {currentCityDetails.name}
+                                    </Popover>
                                 }
                                 addonAfter={<SearchOutlined />}
                                 size="large"
@@ -86,8 +86,8 @@ const SearchBar = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
