@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getDineCategories } from '../../../redux/actions/DineAction';
+import { getDineCategories, getCollectionCategories } from '../../../redux/actions/DineAction';
 import CollectionsCategory from './category/collections/CollectionCategory';
 import DineCategory from './category/dine/DineCategory';
-import "./ContentComponent.scss";
+import styles from "./ContentComponent.module.css";
 
 const ContentComponent = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getDineCategories());
+        dispatch(getCollectionCategories());
     });
 
     return (
-        <div className="content-container">
+        <div className={styles.contentContainer}>
             <DineCategory />
             <CollectionsCategory />
         </div>

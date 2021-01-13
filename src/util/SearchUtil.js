@@ -6,7 +6,6 @@ export const getGeoLocation = () => {
 }
 
 export const showError = (error) => {
-    console.log(error);
     switch (error.code) {
         case error.PERMISSION_DENIED:
             return "User denied the request for Geolocation.";
